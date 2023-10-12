@@ -1,0 +1,30 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Recuperar Contraseña</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title size="large" class="custom-title ion-text-center">JuMarket</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div class="ion-padding">
+    <h1>¿Problemas con tu Contraseña?</h1>
+
+    <h2>Recuperar</h2>
+    <img alt="Imagen" src="" />
+    <ion-card class="ion-text-center">
+      <ion-item>
+        <ion-input label="Email" type="email" placeholder="email@domain.com"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input label="Confirmar Email" type="email" placeholder="email@domain.com"></ion-input>
+      </ion-item>
+      <ion-button expand="block" (click)="showAlert()">Enviar Mail recuperación</ion-button>
+      <ion-button fill="clear" routerLink="/register">No tengo cuenta</ion-button>
+      <ion-button fill="clear" class="ion-text-center ion-align-items-center" routerLink="/login">Volver</ion-button>
+    </ion-card>
+  </div>
+</ion-content>

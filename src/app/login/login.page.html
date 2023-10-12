@@ -1,0 +1,32 @@
+<ion-content>
+  <div class="ion-padding">
+    <h1>Bienvenido</h1>
+    <h2>Iniciar Sesión</h2>
+    <ion-card class="ion-text-center">
+      <form [formGroup]="loginForm" (ngSubmit)="login()">
+        <ion-item>
+          <ion-label position="stacked">Email</ion-label>
+          <ion-input
+            formControlName="email"
+            type="email"
+            placeholder="email@domain.com"
+          ></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Contraseña</ion-label>
+          <ion-input
+            formControlName="password"
+            type="password"
+            maxlength="8"
+          ></ion-input>
+        </ion-item>
+        <ion-button type="submit" expand="block">Login</ion-button>
+<div *ngIf="errorMessage" class="error-message">
+  {{ errorMessage }}
+</div>
+      </form>
+      <ion-button fill="clear" routerLink="/register">Registrar</ion-button>
+      <ion-button fill="clear" routerLink="/forgot">Olvidé Contraseña</ion-button>
+    </ion-card>
+  </div>
+</ion-content>

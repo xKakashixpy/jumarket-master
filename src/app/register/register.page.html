@@ -1,0 +1,52 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Registro</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title size="large" class="custom-title ion-text-center">JuMarket</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div class="ion-padding">
+    <h1>Bienvenido</h1>
+
+    <h2>Formulario Registro</h2>
+    <img
+      alt="Imagen"
+      src=""
+    />
+    <ion-card class="ion-text-center">
+      <form [formGroup]="registerForm" (ngSubmit)="register()">
+        <ion-item>
+          <ion-label position="stacked">Nombre</ion-label>
+          <ion-input formControlName="nombre" placeholder="Nombre completo"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Telefono</ion-label>
+          <ion-input formControlName="telefono" type="number" placeholder="+569 9999 9999"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Password</ion-label>
+          <ion-input formControlName="password" type="password" maxlength="8"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Repetir password</ion-label>
+          <ion-input formControlName="confirmPassword" type="password" maxlength="8"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Email</ion-label>
+          <ion-input formControlName="email" type="email" placeholder="email@domain.com"></ion-input>
+        </ion-item>
+      </form>
+    </ion-card>
+    <ion-button expand="block" (click)="register()">Registrar</ion-button>
+    <ion-button fill="clear" class="ion-align-items-center" routerLink="/login">Volver</ion-button>
+  </div>
+</ion-content>
+
