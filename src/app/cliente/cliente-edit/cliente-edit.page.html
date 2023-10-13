@@ -1,0 +1,35 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>cliente-edit</ion-title>
+    <ion-buttons slot="end">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content padding>
+  <form [formGroup]="clienteForm"  (ngSubmit)="onFormSubmit(clienteForm.value)">
+    <ion-item>
+      <ion-label position="floating">Nombre </ion-label>
+      <ion-input type="text" [(ngModel)]="cliente.first_name" formControlName="cli_first_name"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">apellido</ion-label>
+      <ion-input type="text" [(ngModel)]="cliente.last_name" formControlName="cli_last_name"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Correo</ion-label>
+      <ion-textarea [(ngModel)]="cliente.email" formControlName="cli_email"></ion-textarea>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Clave</ion-label>
+      <ion-input type="text" [(ngModel)]="cliente.clave" formControlName="cli_clave"></ion-input>
+    </ion-item>
+    <ion-button type="submit" shape="round" color="primary" expand="block" [disabled]="!clienteForm.valid">Submit</ion-button>
+  </form>
+</ion-content>
