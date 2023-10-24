@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { defineCustomElements } from '@ionic/pwa-elements/loader';
 
 @Component({
   selector: 'app-root',
@@ -27,5 +28,7 @@ export class AppComponent {
 
   ];
   public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
-  constructor() {}
+  constructor() {
+    defineCustomElements(window);
+  }
 }

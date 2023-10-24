@@ -68,7 +68,10 @@ const routes: Routes = [
     path: 'cliente-list',
     loadChildren: () => import('./cliente/cliente-list/cliente-list.module').then( m => m.ClienteListPageModule)
   },
-
+  {
+    path: 'foto',
+    loadChildren: () => import('./foto/foto.module').then( m => m.FotoPageModule)
+  },
   {
     path: '**',
     loadChildren: () => import('./not-found/not-found.module').then( m => m.NotFoundPageModule)
