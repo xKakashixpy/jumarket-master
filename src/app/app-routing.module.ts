@@ -73,6 +73,10 @@ const routes: Routes = [
     loadChildren: () => import('./foto/foto.module').then( m => m.FotoPageModule)
   },
   {
+    path: 'geolocalizacion',
+    loadChildren: () => import('./geolocalizacion/geolocalizacion.module').then( m => m.GeolocalizacionPageModule)
+  },
+  {
     path: '**',
     loadChildren: () => import('./not-found/not-found.module').then( m => m.NotFoundPageModule)
   },
