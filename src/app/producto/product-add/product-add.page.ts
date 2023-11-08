@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroupDirective, FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
+import { FormControl, FormGroup, FormBuilder, Validators, NgForm } from '@angular/forms';
 import { LoadingController, AlertController } from '@ionic/angular';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ClProducto } from '../model/ClProducto';
-
 import { ProductServiceService } from '../product-service.service';
-
 
 @Component({
   selector: 'app-product-add',
@@ -13,72 +11,65 @@ import { ProductServiceService } from '../product-service.service';
   styleUrls: ['./product-add.page.scss'],
 })
 export class ProductAddPage implements OnInit {
-  //Creamos una variable del tipo FormGroup
-  // ! ==> Con esto le decimos a TS, que sabemos que la variable no esta inicializada
-  //          y que estamos seguro que cuando se ejecute no será null
   productForm!: FormGroup;
-  // Generalmente se usa una interface, sin embargo para jugar utilizaremos  una clase
-  producto: ClProducto = {
-    id: 0
-    , nombre: 'Agrega tu Nuevo Producto'
-    , descripcion: 'Descripcion corta'
-    , precio: 0
-    , fecha: new Date()
-    , cantidad: 0
-  };
+  producto: ClProducto = new ClProducto({
+    idProducto: 0,
+    nombreprod: 'Agrega tu Nuevo Producto',
+    descripcion: 'Descripcion corta',
+    precio: 0,
+    fecha: new Date(),
+    cantidad: 0,
+    rut: 0,
+    dv: '0',
+    enfermedad: '0',
+    fonocontacto: 0,
+    categoria: '0',
+    editorial: '0',
+    raza: '0',
+    edad: 0,
+    altura: 0,
+    hrini: '0',
+    hrfin: '0',
+    direccion: '0',
+    fCreacion: new Date(),
+  });
 
-  // Injectamos FormBuilder, el cual nos permitirá realizar validaciones                         
   constructor(private formBuilder: FormBuilder,
-    // Injectamos las librerías necesarias
     private loadingController: LoadingController,
     private restApi: ProductServiceService,
-    private router: Router,
-  ) { }
+    private router: Router) {}
 
-  // Antes que inicie en pantalla
-  // especificamos las validaciones, 
-  //    por medio de formBuilder injectado en el constructor
   ngOnInit() {
-    // Especificamos que todos los campos son obligatorios
     this.productForm = this.formBuilder.group({
-      "prod_name": [null, Validators.required],
-      'prod_desc': [null, Validators.required],
-      'prod_price': [null, Validators.required],
-      'prod_cantidad': [null, Validators.required]
+      "prod_name": [null, Validators.required], // Aquí debes asegurarte de que coincida con el nombre del campo en tu formulario
+      'prod_desc': [null, Validators.required], // Asegúrate de que coincida con el nombre del campo en tu formulario
+      'prod_price': [null, Validators.required], // Asegúrate de que coincida con el nombre del campo en tu formulario
+      'prod_cantidad': [null, Validators.required], // Asegúrate de que coincida con el nombre del campo en tu formulario
     });
   }
-  // se ejecutará cuando presione el Submit
-  async onFormSubmit(form: NgForm) {
-    console.log("onFormSubmit del Product ADD")
 
-    // Creamos un Loading Controller, Ojo no lo muestra
+  async onFormSubmit(form: NgForm) {
     const loading = await this.loadingController.create({
       message: 'Loading...'
     });
-    // Muestra el Loading Controller
     await loading.present();
 
-    // Ejecuta el método del servicio y los suscribe
     await this.restApi.addProduct(this.producto)
       .subscribe({
         next: (res) => {
-          console.log("Next AddProduct Page",res)
-          loading.dismiss(); //Elimina la espera
-          if (res== null){ // No viene respuesta del registro
-            console.log("Next No Agrego, Ress Null ");
-            return
+          loading.dismiss();
+          if (res == null) {
+            console.log("Next No Agrego, Res Null");
+            return;
           }
-          // Si viene respuesta
-          console.log("Next Agrego SIIIIII Router saltaré ;",this.router);
+          console.log("Next Agrego SIIIIII Router saltaré ;", this.router);
           this.router.navigate(['/product-list']);
-        }
-        , complete: () => { }
-        , error: (err) => {
-          console.log("Error AddProduct Página",err);
-          loading.dismiss(); //Elimina la espera
+        },
+        complete: () => {},
+        error: (err) => {
+          console.log("Error AddProduct Página", err);
+          loading.dismiss();
         }
       });
-    console.log("Observe que todo lo del suscribe sale después de este mensaje")
   }
-
 }
