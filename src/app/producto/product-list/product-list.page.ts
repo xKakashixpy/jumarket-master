@@ -37,7 +37,7 @@ export class ProductListPage implements OnInit {
     await loading.present();
     console.log("Entrando :");
     // Obtiene el Observable del servicio
-    await this.restApi.getProducts("")
+    await this.restApi.getProducts()
       .subscribe({
         next: (res) => { 
           console.log("Res:" + res);

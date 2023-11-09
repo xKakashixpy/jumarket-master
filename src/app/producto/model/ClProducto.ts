@@ -32,27 +32,26 @@ export class ClProducto {
   direccion: string;
   fCreacion: Date;
 
-  constructor(obj: any) {
-    this.idProducto = obj && obj.idProducto || null;
-    this.codigo = obj && obj.codigo || null;
-    this.nombreprod = obj && obj.nombreprod || null;
-    this.precio = obj && obj.precio || null;
-    this.cantidad = obj && obj.cantidad || null;
-    this.fechaNacimiento = obj && obj.fechaNacimiento ? new Date(obj.fechaNacimiento) : new Date();
-    this.rut = obj && obj.rut || null;
-    this.dv = obj && obj.dv || null;
-    this.enfermedad = obj && obj.enfermedad || null;
-    this.fonocontacto = obj && obj.fonocontacto || null;
-    this.categoria = obj && obj.categoria || null;
-    this.editorial = obj && obj.editorial || null;
-    this.raza = obj && obj.raza || null;
-    this.edad = obj && obj.edad || null;
-    this.altura = obj && obj.altura || null;
-    this.hrini = obj && obj.hrini || null;
-    this.hrfin = obj && obj.hrfin || null;
-    this.direccion = obj && obj.direccion || null;
-    this.fCreacion = obj && obj.fCreacion ? new Date(obj.fCreacion) : new Date();
-
-
+  constructor(obj: any = {}) {
+    this.idProducto = obj.idProducto || 1;
+    this.codigo = obj.codigo || '';
+    this.nombreprod = obj.nombreprod || '';
+    this.precio = obj.precio || 0;
+    this.cantidad = obj.cantidad || 0;
+    this.fechaNacimiento = obj.fechaNacimiento || new Date();
+    this.rut = obj.rut || 0;
+    this.dv = obj.dv || '';
+    this.enfermedad = obj.enfermedad || '';
+    this.fonocontacto = obj.fonocontacto || 0;
+    this.categoria = obj.categoria || '';
+    this.editorial = obj.editorial || '';
+    this.raza = obj.raza || '';
+    this.edad = obj.edad || 0;
+    this.altura = obj.altura || 0;
+    this.hrini = obj.hrini || '';
+    this.hrfin = obj.hrfin || '';
+    this.direccion = obj.direccion || '';
+    this.fCreacion = obj.fCreacion || new Date();
   }
 }
+
