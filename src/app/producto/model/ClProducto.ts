@@ -1,20 +1,8 @@
-// export class ClProducto {
-//   id: number = 999;
-//   nombre: string = '';
-//   descripcion: string = '';
-//   precio: number = 0;
-//   cantidad: number = 0;
-//   fecha: Date = new Date();
-
-//   constructor(values: Partial<ClProducto> = {}) {
-//     Object.assign(this, values);
-//   }
-// }
-
 export class ClProducto {
   idProducto: number;
   codigo: string;
   nombreprod: string;
+  descripcion: string;
   precio: number;
   cantidad: number;
   fechaNacimiento: Date;
@@ -36,6 +24,7 @@ export class ClProducto {
     this.idProducto = obj.idProducto || 1;
     this.codigo = obj.codigo || '';
     this.nombreprod = obj.nombreprod || '';
+    this.descripcion = obj.descripcion || '';
     this.precio = obj.precio || 0;
     this.cantidad = obj.cantidad || 0;
     this.fechaNacimiento = obj.fechaNacimiento || new Date();
@@ -54,4 +43,3 @@ export class ClProducto {
     this.fCreacion = obj.fCreacion || new Date();
   }
 }
-

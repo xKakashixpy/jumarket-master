@@ -17,6 +17,7 @@ export class ProductAllPage implements OnInit {
     idProducto: 1,
     codigo: '',
     nombreprod: '',
+    descripcion:'',
     precio: 0,
     cantidad: 0,
     fechaNacimiento: new Date(),
