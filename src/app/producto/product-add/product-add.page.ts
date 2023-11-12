@@ -13,7 +13,8 @@ import { ProductServiceService } from '../product-service.service';
 export class ProductAddPage implements OnInit {
   productForm!: FormGroup;
   producto: ClProducto = new ClProducto({
-    idProducto: 0,
+    idProducto: 1690,
+    codigo:"09-G12",
     nombreprod: 'Agrega tu Nuevo Producto',
     descripcion: 'Descripcion corta',
     precio: 0,

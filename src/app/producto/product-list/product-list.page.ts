@@ -31,7 +31,7 @@ export class ProductListPage implements OnInit {
     console.log("Entrando :getProducts");
     // Crea un Wait (Esperar)
     const loading = await this.loadingController.create({
-      message: 'Harrys Loading...'
+      message: 'Api Productos Cargando...'
     });
     // Muestra el Wait
     await loading.present();
@@ -42,7 +42,7 @@ export class ProductListPage implements OnInit {
         next: (res) => { 
           console.log("Res:" + res);
   // Si funciona asigno el resultado al arreglo productos
-          this.productos = res;
+          this.productos = res.filter(producto => producto.codigo === "09-G12");
           console.log("thisProductos:",this.productos);
           loading.dismiss();
         }
