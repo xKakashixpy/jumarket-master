@@ -13,10 +13,9 @@ import { ProductServiceService } from '../product-service.service';
 export class ProductAddPage implements OnInit {
   productForm!: FormGroup;
   producto: ClProducto = new ClProducto({
-    idProducto: 1690,
+    idProducto: 0,
     codigo:"09-G12",
     nombreprod: 'Agrega tu Nuevo Producto',
-    descripcion: 'Descripcion corta',
     precio: 0,
     fecha: new Date(),
     cantidad: 0,
@@ -43,7 +42,7 @@ export class ProductAddPage implements OnInit {
   ngOnInit() {
     this.productForm = this.formBuilder.group({
       "prod_name": [null, Validators.required], // Aquí debes asegurarte de que coincida con el nombre del campo en tu formulario
-      'prod_desc': [null, Validators.required], // Asegúrate de que coincida con el nombre del campo en tu formulario
+      'prod_categoria': [null, Validators.required], // Asegúrate de que coincida con el nombre del campo en tu formulario
       'prod_price': [null, Validators.required], // Asegúrate de que coincida con el nombre del campo en tu formulario
       'prod_cantidad': [null, Validators.required], // Asegúrate de que coincida con el nombre del campo en tu formulario
     });
@@ -61,10 +60,14 @@ export class ProductAddPage implements OnInit {
           loading.dismiss();
           if (res == null) {
             console.log("Next No Agrego, Res Null");
+            
+            
             return;
           }
           console.log("Next Agrego SIIIIII Router saltaré ;", this.router);
+          
           this.router.navigate(['/product-list']);
+          
         },
         complete: () => {},
         error: (err) => {

@@ -5,7 +5,7 @@ import { Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-const apiUrl = "https://sumativa2.onrender.com/api/productos/";
+const apiUrl = "https://sumativa2.onrender.com/api/productos";
 const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
 
 @Injectable({
@@ -23,11 +23,12 @@ export class ProductServiceService {
 
   addProduct(producto: ClProducto): Observable<ClProducto> {
     console.log("Res-api Enviando AddProducto : ", producto);
-    return this.http.post<ClProducto>(apiUrl, producto, httpOptions)
-      .pipe(
-        tap((producto: ClProducto) => console.log('added product with idProducto:', producto.idProducto)),
-        catchError(this.handleError<ClProducto>('addProduct'))
-      );
+    return this.http.post<ClProducto>(`${apiUrl}/`, producto, httpOptions)
+  .pipe(
+    tap(() => console.log('added product')),
+    catchError(this.handleError<ClProducto>('addProduct'))
+  );
+
   }
 
   getProducts(): Observable<ClProducto[]> {
